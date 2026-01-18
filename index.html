@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,11 +8,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- DevIcons -->
+  <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 
   <!-- React and ReactDOM -->
   <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-
+  
   <!-- Babel -->
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
@@ -21,26 +23,24 @@
     body {
       font-family: 'Poppins', sans-serif;
     }
-
     .overflow-hidden-mobile {
-      overflow: hidden;
+        overflow: hidden;
     }
-
+    
     /* Animation for Left to Right scrolling */
     @keyframes scroll-ltr {
       0% {
         transform: translateX(-50%);
       }
-
       100% {
         transform: translateX(0);
       }
     }
-
+    
     .animate-scroll-ltr {
       animation: scroll-ltr 40s linear infinite;
     }
-
+    
     .pause-on-hover:hover {
       animation-play-state: paused;
     }
@@ -49,13 +49,21 @@
     .no-scrollbar::-webkit-scrollbar {
       display: none;
     }
-
     .no-scrollbar {
       -ms-overflow-style: none;
       scrollbar-width: none;
     }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+      animation: fadeIn 0.5s ease-out forwards;
+    }
   </style>
-  <script type="importmap">
+<script type="importmap">
 {
   "imports": {
     "react": "https://esm.sh/react@^19.2.3",
@@ -64,12 +72,10 @@
   }
 }
 </script>
-  <link rel="stylesheet" href="/index.css">
+<link rel="stylesheet" href="/index.css">
 </head>
-
 <body class="bg-[#0A0A0A] text-gray-300">
   <div id="root"></div>
-
 
   <script type="text/babel">
     const { useState, useEffect } = React;
@@ -101,8 +107,9 @@
       return (
         <header
           id="header"
-          className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-gray-900/80 backdrop-blur-sm shadow-lg' : 'bg-transparent'
-            }`}
+          className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+            isScrolled ? 'bg-gray-900/80 backdrop-blur-sm shadow-lg' : 'bg-transparent'
+          }`}
         >
           <div className="container mx-auto flex items-center justify-between p-4">
             <a href="#inicio" className="flex items-center space-x-2">
@@ -113,9 +120,9 @@
                     <stop offset="100%" style={{ stopColor: '#0EA5E9' }} />
                   </linearGradient>
                 </defs>
-                <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="url(#logo-gradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M2 17L12 22L22 17" stroke="url(#logo-gradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M2 12L12 17L22 12" stroke="url(#logo-gradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="url(#logo-gradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M2 17L12 22L22 17" stroke="url(#logo-gradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M2 12L12 17L22 12" stroke="url(#logo-gradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
               <span className="text-xl font-bold text-white hidden sm:inline">Santiago Cataño</span>
             </a>
@@ -145,8 +152,9 @@
           </div>
           {/* Mobile Menu */}
           <div
-            className={`md:hidden fixed top-0 left-0 w-full h-screen bg-gray-900 transform transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
-              }`}
+            className={`md:hidden fixed top-0 left-0 w-full h-screen bg-gray-900 transform transition-transform duration-300 ease-in-out ${
+              isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
+            }`}
           >
             <div className="flex flex-col items-center justify-center h-full space-y-8">
               {['Sobre mí', 'Habilidades', 'Proyectos', 'Contacto'].map((item) => (
@@ -170,7 +178,7 @@
       return (
         <section id="inicio" className="min-h-screen flex items-center justify-center py-16 md:py-0">
           <div className="flex flex-col-reverse md:flex-row items-center justify-center gap-10 md:gap-16 lg:gap-24 w-full max-w-6xl px-4">
-
+            
             {/* Text Content */}
             <div className="space-y-6 text-center md:text-left flex-shrink-0 max-w-lg">
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white">
@@ -179,19 +187,19 @@
               <p className="text-lg md:text-2xl text-gray-400">
                 Analista de Datos | Machine Learning | Visualización de Datos
               </p>
-              <a
+              <a 
                 href="#proyectos"
                 className="inline-block px-8 py-3 text-lg font-semibold text-white bg-gradient-to-r from-emerald-500 to-sky-600 rounded-md shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 focus:ring-offset-gray-900"
               >
                 Ver Proyectos
               </a>
             </div>
-
+            
             {/* Professional Photo */}
             <div className="relative w-60 h-60 md:w-72 md:h-72 lg:w-80 lg:h-80 flex-shrink-0">
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-500 to-sky-600 rounded-full transform transition-transform duration-500 hover:scale-105 shadow-2xl shadow-emerald-500/30"></div>
               <div className="absolute inset-2 bg-[#0A0A0A] rounded-full p-1">
-                <img
+                <img 
                   src="https://raw.githubusercontent.com/santiagocatanot/data/refs/heads/main/Images/Foto.png"
                   alt="Foto profesional de Santiago Cataño"
                   className="w-full h-full object-cover rounded-full"
@@ -232,141 +240,135 @@
       );
     };
 
-    // --- Skills Content (Content Only) ---
+    // --- Skills Content ---
     const SkillsContent = () => {
-      const skills = [
+      const skillCategories = [
         {
-          name: 'Python',
-          desc: 'pandas, scikit-learn, numpy, matplotlib',
+          title: "Lenguajes & Análisis",
           icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-400"><path d="M13.8 3.5c-2.3 2.3-2.3 6.1 0 8.5l-4.2 4.2c-2.3 2.3-6.1 2.3-8.5 0s-2.3-6.1 0-8.5l4.2-4.2c2.3-2.3 6.1-2.3 8.5 0z" /><path d="M10.2 20.5c2.3-2.3 2.3-6.1 0-8.5l4.2-4.2c2.3-2.3 6.1-2.3 8.5 0s2.3 6.1 0 8.5l-4.2 4.2c-2.3 2.3-6.1 2.3-8.5 0z" /><path d="M14.5 9.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" /><path d="M8.5 15.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" /></svg>
-          )
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-400"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg>
+          ),
+          skills: [
+            { name: "Python", icon: "devicon-python-plain" },
+            { name: "SQL", icon: "devicon-mysql-plain" },
+            { name: "R", icon: "devicon-r-plain" },
+            { name: "DAX", icon: "devicon-azuresqldatabase-plain" }
+          ]
         },
         {
-          name: 'SQL',
-          desc: 'Consultas, optimización y modelado de datos',
+          title: "Visualización & BI",
           icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-400"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
-          )
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-400"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+          ),
+          skills: [
+            { name: "Power BI", icon: "devicon-azuresqldatabase-plain" },
+            { name: "Tableau", icon: "devicon-tableau-plain" },
+            { name: "Excel Avanzado", icon: "devicon-windows8-original" },
+            { name: "Looker", icon: "devicon-google-plain" }
+          ]
         },
         {
-          name: 'Power BI',
-          desc: 'Creación de dashboards e informes',
+          title: "Machine Learning & IA",
           icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-400"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>
-          )
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-400"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6a6 6 0 1 0 6 6 6 6 0 0 0-6-6zm0 10a4 4 0 1 1 4-4 4 4 0 0 1-4 4z"/></svg>
+          ),
+          skills: [
+            { name: "Scikit-learn", icon: "devicon-scikitlearn-plain" },
+            { name: "Pandas", icon: "devicon-pandas-plain" },
+            { name: "Claude API", icon: "devicon-anthropic-plain" },
+            { name: "Modelos Predictivos", icon: "devicon-tensorflow-original" }
+          ]
         },
         {
-          name: 'Domo BI',
-          desc: 'Inteligencia de negocios y visualización',
+          title: "Automatización & Herramientas",
           icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-400"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>
-          )
-        },
-        {
-          name: 'Excel Avanzado',
-          desc: 'Macros, tablas dinámicas y fórmulas complejas',
-          icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-400"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-          )
-        },
-        {
-          name: 'Visual Basic',
-          desc: 'Automatización de tareas en Office',
-          icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-400"><path d="M12 20V10" /><path d="M18 20V4" /><path d="M6 20v-4" /><path d="m15 5-3-3-3 3" /><path d="m9 15 3 3 3-3" /></svg>
-          )
-        },
-        {
-          name: 'Machine Learning',
-          desc: 'Modelos predictivos y minería de datos',
-          icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-400"><path d="M20 11.08V8l-6-4-6 4v3.08" /><path d="M12 22v-8" /><path d="m8 18-4 4" /><path d="m12 14-4 4" /><path d="m16 18 4 4" /><path d="m20 14 4 4" /><path d="m4 14 4 4" /></svg>
-          )
-        },
-        {
-          name: 'Automatización',
-          desc: 'Optimización de procesos y flujos de trabajo',
-          icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-400"><path d="M12 20V10" /><path d="M18 20V4" /><path d="M6 20v-4" /><path d="m15 5-3-3-3 3" /><path d="m9 15 3 3 3-3" /></svg>
-          )
-        },
-        {
-          name: 'Dashboards',
-          desc: 'Diseño y desarrollo de paneles interactivos',
-          icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-400"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
-          )
-        },
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-400"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          ),
+          skills: [
+            { name: "n8n", icon: "devicon-n8n-plain" },
+            { name: "Git & GitHub", icon: "devicon-github-original" },
+            { name: "APIs", icon: "devicon-fastapi-plain" },
+            { name: "ETL Pipelines", icon: "devicon-apache-plain" }
+          ]
+        }
       ];
 
       return (
         <div className="w-full">
-          {/* Original Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-16">
-            {skills.map((skill, index) => (
-              <div key={index} className="bg-gray-800/50 p-6 rounded-lg border border-gray-700/50 text-center transition-all duration-300 hover:border-emerald-400/50 hover:shadow-lg hover:shadow-emerald-500/10 hover:-translate-y-1">
-                <div className="flex justify-center mb-4">
-                  <div className="p-3 bg-gray-700/50 rounded-full border-2 border-emerald-400/50">
-                    {skill.icon}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {skillCategories.map((category, index) => (
+              <div key={index} className="bg-gray-900/60 border border-gray-700/80 rounded-2xl p-6 md:p-8 hover:border-emerald-500/50 transition-colors shadow-lg">
+                <div className="flex items-center mb-6">
+                  <div className="mr-3 p-2 bg-gray-800/50 rounded-lg border border-gray-700/50 text-emerald-400">
+                    {category.icon}
                   </div>
+                  <h3 className="text-xl font-bold text-white">{category.title}</h3>
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-2">{skill.name}</h3>
-                <p className="text-gray-400 text-sm">{skill.desc}</p>
+                <div className="flex flex-wrap gap-3">
+                  {category.skills.map((skill, idx) => (
+                    <span key={idx} className="px-4 py-2 rounded-full bg-gray-800 border border-gray-700 text-gray-300 text-sm font-medium flex items-center hover:border-emerald-500 hover:text-white transition-colors cursor-default">
+                      {skill.icon && <i className={`${skill.icon} text-lg mr-2`}></i>}
+                      {skill.name}
+                    </span>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
+        </div>
+      );
+    };
 
-          {/* New Detailed Skills Section (Consolidated) */}
-          <div className="bg-gray-900/60 border border-gray-700/80 rounded-2xl p-8 md:p-12 shadow-2xl text-left">
-            <h3 className="text-2xl font-bold text-white mb-8 flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-3 text-emerald-400"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" /></svg>
-              Lenguajes y Herramientas
-            </h3>
-
-            {/* Sub-section: Languages */}
-            <div className="mb-8">
-              <h4 className="text-xl text-gray-300 mb-4 border-b border-gray-700 pb-2">Lenguajes de Programación y Análisis</h4>
-              <div className="flex flex-wrap gap-3">
-                {[
-                  { name: "Python", color: "bg-emerald-500" },
-                  { name: "R", color: "bg-sky-500" },
-                  { name: "SQL", color: "bg-teal-500" },
-                  { name: "DAX", color: null },
-                  { name: "M", color: null },
-                  { name: "VBA", color: null }
-                ].map((tool, idx) => (
-                  <span key={idx} className="px-4 py-2 rounded-full bg-gray-800 border border-gray-600 text-gray-300 flex items-center hover:border-emerald-500 hover:text-emerald-400 transition-colors cursor-default">
-                    {tool.color && <span className={`w-2 h-2 rounded-full ${tool.color} mr-2`}></span>}
-                    {tool.name}
-                  </span>
-                ))}
+    // --- Education Content ---
+    const EducationContent = () => {
+      return (
+        <div className="w-full animate-fade-in">
+          {/* Main Degree */}
+          <div className="bg-gray-900/60 border border-gray-700/80 border-l-4 border-l-emerald-500 rounded-2xl p-8 mb-8 shadow-2xl relative overflow-hidden group hover:border-emerald-500/50 transition-colors">
+            <div className="flex items-start">
+              <div className="flex-shrink-0 mr-6 mt-1 hidden sm:block">
+                <div className="p-4 bg-gray-800/50 rounded-xl border border-gray-700/50">
+                    {/* Graduation Cap Icon */}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-white"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 0 6-3 6-3s3 3 6 3v-5"/></svg>
+                </div>
               </div>
-            </div>
-
-            {/* Sub-section: Platforms */}
-            <div>
-              <h4 className="text-xl text-gray-300 mb-4 border-b border-gray-700 pb-2">Plataformas y Entorno</h4>
-              <div className="flex flex-wrap gap-3">
-                <span className="px-4 py-2 rounded-full bg-gray-800 border border-gray-600 text-gray-300 flex items-center hover:border-emerald-500 hover:text-emerald-400 transition-colors cursor-default">
-                  Jupyter
-                </span>
-                <span className="px-4 py-2 rounded-full bg-gray-800 border border-gray-600 text-gray-300 flex items-center hover:border-emerald-500 hover:text-emerald-400 transition-colors cursor-default">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2 text-sky-400"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg> VS Code
-                </span>
-                <span className="px-4 py-2 rounded-full bg-gray-800 border border-gray-600 text-gray-300 flex items-center hover:border-emerald-500 hover:text-emerald-400 transition-colors cursor-default">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2 text-white"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg> Git & GitHub
-                </span>
-                <span className="px-4 py-2 rounded-full bg-gray-800 border border-gray-600 text-gray-300 flex items-center hover:border-emerald-500 hover:text-emerald-400 transition-colors cursor-default">
-                  AWS
-                </span>
-                <span className="px-4 py-2 rounded-full bg-gray-800 border border-gray-600 text-gray-300 flex items-center hover:border-emerald-500 hover:text-emerald-400 transition-colors cursor-default">
-                  Azure
-                </span>
+              <div>
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">Administrador de Empresas</h3>
+                <p className="text-emerald-400 font-semibold mb-3 text-lg">Universidad de Antioquia | 2017</p>
+                <p className="text-gray-400 leading-relaxed text-base">
+                  Formación integral en procesos empresariales, optimización y gestión de operaciones con enfoque en mejora continua y análisis de datos para la toma de decisiones estratégicas.
+                </p>
               </div>
             </div>
           </div>
 
+          {/* Additional Studies */}
+          <div className="relative">
+              <h3 className="text-2xl font-bold text-white mb-8 relative inline-block">
+                Estudios Adicionales
+                <span className="absolute -bottom-2 left-0 w-1/3 h-1 bg-gradient-to-r from-emerald-400 to-sky-500"></span>
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {[
+                  { title: "Data Science for All", entity: "MinTIC", year: "2022" },
+                  { title: "Machine Learning in Python", entity: "University of Michigan - Coursera", year: "2020" },
+                  { title: "Data Analysis and Machine Learning", entity: "University of Michigan - Coursera", year: "2019" },
+                  { title: "Introduction to Data Science", entity: "University of Michigan - Coursera", year: "2022" },
+                  { title: "Basic Python", entity: "Platzi", year: "2022" },
+                  { title: "Statistics Introduction with R", entity: "Universidad de Antioquia", year: "2018" }
+                ].map((study, idx) => (
+                  <div key={idx} className="bg-gray-800/40 border border-gray-700/50 border-l-4 border-l-emerald-500 p-6 rounded-lg hover:bg-gray-800/60 transition-all duration-300 hover:-translate-y-1 hover:border-sky-500/30 group">
+                    <div className="h-full flex flex-col">
+                        <h4 className="text-white font-bold text-lg mb-2 group-hover:text-sky-400 transition-colors">{study.title}</h4>
+                        <div className="mt-auto pt-4 border-t border-gray-700/50 flex justify-between items-center text-sm">
+                            <span className="text-sky-400 font-medium">{study.entity}</span>
+                            <span className="text-gray-500">{study.year}</span>
+                        </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+          </div>
         </div>
       );
     };
@@ -382,19 +384,26 @@
             {/* Toggle Buttons (Segmented Control style) */}
             <div className="flex justify-center mb-16">
               <div className="bg-gray-900 p-1 rounded-full inline-flex border border-gray-800 relative">
-                {/* Sliding Background (Simplified as conditional styling for now) */}
                 <button
                   onClick={() => setActiveTab('skills')}
-                  className={`flex items-center space-x-2 px-8 py-3 rounded-full text-lg font-medium transition-all duration-300 relative z-10 ${activeTab === 'skills' ? 'bg-gradient-to-r from-emerald-500 to-sky-500 text-white shadow-lg' : 'text-gray-400 hover:text-white'}`}
+                  className={`flex items-center space-x-2 px-8 py-3 rounded-full text-lg font-medium transition-all duration-300 relative z-10 ${
+                    activeTab === 'skills' 
+                      ? 'bg-gradient-to-r from-emerald-500 to-sky-500 text-white shadow-lg' 
+                      : 'text-gray-400 hover:text-white'
+                  }`}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
                   <span>Habilidades</span>
                 </button>
                 <button
                   onClick={() => setActiveTab('education')}
-                  className={`flex items-center space-x-2 px-8 py-3 rounded-full text-lg font-medium transition-all duration-300 relative z-10 ${activeTab === 'education' ? 'bg-gradient-to-r from-emerald-500 to-sky-500 text-white shadow-lg' : 'text-gray-400 hover:text-white'}`}
+                  className={`flex items-center space-x-2 px-8 py-3 rounded-full text-lg font-medium transition-all duration-300 relative z-10 ${
+                    activeTab === 'education' 
+                      ? 'bg-gradient-to-r from-emerald-500 to-sky-500 text-white shadow-lg' 
+                      : 'text-gray-400 hover:text-white'
+                  }`}
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z" /><path d="M6 12v5c3 0 6-3 6-3s3 3 6 3v-5" /></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 0 6-3 6-3s3 3 6 3v-5"/></svg>
                   <span>Educación</span>
                 </button>
               </div>
@@ -405,55 +414,6 @@
               {activeTab === 'skills' ? (
                 <div className="animate-fade-in-up">
                   <SkillsContent />
-                  {/* Detailed Sub-Sections moved here as part of Skills View */}
-                  <div className="bg-gray-900/60 border border-gray-700/80 rounded-2xl p-8 md:p-12 shadow-2xl text-left mt-12">
-                    <h3 className="text-2xl font-bold text-white mb-8 flex items-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-3 text-emerald-400"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" /></svg>
-                      Lenguajes y Herramientas
-                    </h3>
-
-                    {/* Sub-section: Languages */}
-                    <div className="mb-8">
-                      <h4 className="text-xl text-gray-300 mb-4 border-b border-gray-700 pb-2">Lenguajes de Programación y Análisis</h4>
-                      <div className="flex flex-wrap gap-3">
-                        {[
-                          { name: "Python", color: "bg-emerald-500" },
-                          { name: "R", color: "bg-sky-500" },
-                          { name: "SQL", color: "bg-teal-500" },
-                          { name: "DAX", color: null },
-                          { name: "M", color: null },
-                          { name: "VBA", color: null }
-                        ].map((tool, idx) => (
-                          <span key={idx} className="px-4 py-2 rounded-full bg-gray-800 border border-gray-600 text-gray-300 flex items-center hover:border-emerald-500 hover:text-emerald-400 transition-colors cursor-default">
-                            {tool.color && <span className={`w-2 h-2 rounded-full ${tool.color} mr-2`}></span>}
-                            {tool.name}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Sub-section: Platforms */}
-                    <div>
-                      <h4 className="text-xl text-gray-300 mb-4 border-b border-gray-700 pb-2">Plataformas y Entorno</h4>
-                      <div className="flex flex-wrap gap-3">
-                        <span className="px-4 py-2 rounded-full bg-gray-800 border border-gray-600 text-gray-300 flex items-center hover:border-emerald-500 hover:text-emerald-400 transition-colors cursor-default">
-                          Jupyter
-                        </span>
-                        <span className="px-4 py-2 rounded-full bg-gray-800 border border-gray-600 text-gray-300 flex items-center hover:border-emerald-500 hover:text-emerald-400 transition-colors cursor-default">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2 text-sky-400"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg> VS Code
-                        </span>
-                        <span className="px-4 py-2 rounded-full bg-gray-800 border border-gray-600 text-gray-300 flex items-center hover:border-emerald-500 hover:text-emerald-400 transition-colors cursor-default">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2 text-white"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg> Git & GitHub
-                        </span>
-                        <span className="px-4 py-2 rounded-full bg-gray-800 border border-gray-600 text-gray-300 flex items-center hover:border-emerald-500 hover:text-emerald-400 transition-colors cursor-default">
-                          AWS
-                        </span>
-                        <span className="px-4 py-2 rounded-full bg-gray-800 border border-gray-600 text-gray-300 flex items-center hover:border-emerald-500 hover:text-emerald-400 transition-colors cursor-default">
-                          Azure
-                        </span>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               ) : (
                 <div className="animate-fade-in-up">
@@ -462,19 +422,20 @@
               )}
             </div>
           </div>
-          {/* Global styles for animation if not present (simple fade up) */}
+          {/* Global styles for animation if not present */}
           <style>{`
-                    @keyframes fadeInUp {
-                        from { opacity: 0; transform: translateY(10px); }
-                        to { opacity: 1; transform: translateY(0); }
-                    }
-                    .animate-fade-in-up {
-                        animation: fadeInUp 0.5s ease-out forwards;
-                    }
-                `}</style>
+            @keyframes fadeInUp {
+                from { opacity: 0; transform: translateY(10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            .animate-fade-in-up {
+                animation: fadeInUp 0.5s ease-out forwards;
+            }
+          `}</style>
         </section>
       );
     };
+
     // --- Projects Component ---
     const Projects = () => {
       const [speed, setSpeed] = useState('normal');
@@ -485,14 +446,14 @@
           title: 'Automatización de Facturación y Reportería',
           desc: 'Sistema que integró Python, Power BI y Excel, redujo tiempos operativos y mejoró la precisión de los datos.',
           icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-4 text-sky-400"><path d="M12 20V10" /><path d="M18 20V4" /><path d="M6 20v-4" /><path d="m15 5-3-3-3 3" /><path d="m9 15 3 3 3-3" /></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-4 text-sky-400"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/><path d="m15 5-3-3-3 3"/><path d="m9 15 3 3 3-3"/></svg>
           )
         },
         {
           title: 'Segmentación de Clientes (Sportsbook)',
           desc: 'Modelo en Python que aumentó en un 20% la precisión en la segmentación y retención de clientes.',
           icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-4 text-sky-400"><path d="M20 11.08V8l-6-4-6 4v3.08" /><path d="M12 22v-8" /><path d="m8 18-4 4" /><path d="m12 14-4 4" /><path d="m16 18 4 4" /><path d="m20 14 4 4" /><path d="m4 14 4 4" /></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-4 text-sky-400"><path d="M20 11.08V8l-6-4-6 4v3.08"/><path d="M12 22v-8"/><path d="m8 18-4 4"/><path d="m12 14-4 4"/><path d="m16 18 4 4"/><path d="m20 14 4 4"/><path d="m4 14 4 4"/></svg>
           )
         },
         {
@@ -514,100 +475,56 @@
               Proyectos Destacados
               <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-2/3 h-1 bg-gradient-to-r from-emerald-400 to-sky-500"></span>
             </h2>
-
+            
             {/* Wrapper for Buttons and Marquee */}
             <div className="relative group">
-
-              {/* Left Button - Accelerates Left (Reverse) */}
-              <button
-                className="absolute left-2 md:left-4 top-1/2 z-20 -translate-y-1/2 bg-gray-900/80 backdrop-blur-sm p-3 rounded-full text-emerald-400 border border-emerald-500/30 shadow-lg hover:bg-gray-800 hover:scale-110 hover:shadow-emerald-500/20 transition-all active:scale-95 hidden md:flex items-center justify-center"
-                onMouseEnter={() => { setSpeed('fast'); setDirection('reverse'); }}
-                onMouseLeave={() => { setSpeed('normal'); setDirection('normal'); }}
-                aria-label="Acelerar hacia la izquierda"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6" /></svg>
-              </button>
-
-              {/* Right Button - Accelerates Right (Normal) */}
-              <button
-                className="absolute right-2 md:right-4 top-1/2 z-20 -translate-y-1/2 bg-gray-900/80 backdrop-blur-sm p-3 rounded-full text-sky-400 border border-sky-500/30 shadow-lg hover:bg-gray-800 hover:scale-110 hover:shadow-sky-500/20 transition-all active:scale-95 hidden md:flex items-center justify-center"
-                onMouseEnter={() => { setSpeed('fast'); setDirection('normal'); }}
-                onMouseLeave={() => { setSpeed('normal'); setDirection('normal'); }}
-                aria-label="Acelerar hacia la derecha"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6" /></svg>
-              </button>
-
-              {/* Marquee Container */}
-              <div className="relative w-full overflow-hidden no-scrollbar">
-                {/* The wrapper moves from Left to Right (translateX -50% to 0) by default */}
-                <div
-                  className="flex w-max pause-on-hover"
-                  style={{
-                    animation: `scroll-ltr ${speed === 'fast' ? '15s' : '40s'} linear infinite ${direction}`
-                  }}
+                
+                {/* Left Button - Accelerates Left (Reverse) */}
+                <button 
+                    className="absolute left-2 md:left-4 top-1/2 z-20 -translate-y-1/2 bg-gray-900/80 backdrop-blur-sm p-3 rounded-full text-emerald-400 border border-emerald-500/30 shadow-lg hover:bg-gray-800 hover:scale-110 hover:shadow-emerald-500/20 transition-all active:scale-95 hidden md:flex items-center justify-center"
+                    onMouseEnter={() => { setSpeed('fast'); setDirection('reverse'); }}
+                    onMouseLeave={() => { setSpeed('normal'); setDirection('normal'); }}
+                    aria-label="Acelerar hacia la izquierda"
                 >
-                  {marqueeItems.map((project, index) => (
-                    <div
-                      key={index}
-                      className="w-[300px] md:w-[400px] mx-4 bg-gray-900/60 border border-gray-700/80 rounded-lg p-6 flex flex-col transition-all duration-300 hover:border-sky-500/50 hover:shadow-lg hover:shadow-sky-500/10"
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                </button>
+
+                {/* Right Button - Accelerates Right (Normal) */}
+                <button 
+                    className="absolute right-2 md:right-4 top-1/2 z-20 -translate-y-1/2 bg-gray-900/80 backdrop-blur-sm p-3 rounded-full text-sky-400 border border-sky-500/30 shadow-lg hover:bg-gray-800 hover:scale-110 hover:shadow-sky-500/20 transition-all active:scale-95 hidden md:flex items-center justify-center"
+                    onMouseEnter={() => { setSpeed('fast'); setDirection('normal'); }}
+                    onMouseLeave={() => { setSpeed('normal'); setDirection('normal'); }}
+                    aria-label="Acelerar hacia la derecha"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                </button>
+
+                {/* Marquee Container */}
+                <div className="relative w-full overflow-hidden no-scrollbar">
+                    {/* The wrapper moves from Left to Right (translateX -50% to 0) by default */}
+                    <div 
+                        className="flex w-max pause-on-hover"
+                        style={{
+                            animation: `scroll-ltr ${speed === 'fast' ? '15s' : '40s'} linear infinite ${direction}`
+                        }}
                     >
-                      <div className="flex items-center mb-4">
-                        {project.icon}
-                        <h3 className="text-xl font-bold text-white text-left">{project.title}</h3>
-                      </div>
-                      <p className="text-gray-400 flex-grow text-left">{project.desc}</p>
+                        {marqueeItems.map((project, index) => (
+                          <div 
+                            key={index} 
+                            className="w-[300px] md:w-[400px] mx-4 bg-gray-900/60 border border-gray-700/80 rounded-lg p-6 flex flex-col transition-all duration-300 hover:border-sky-500/50 hover:shadow-lg hover:shadow-sky-500/10"
+                          >
+                            <div className="flex items-center mb-4">
+                              {project.icon}
+                              <h3 className="text-xl font-bold text-white text-left">{project.title}</h3>
+                            </div>
+                            <p className="text-gray-400 flex-grow text-left">{project.desc}</p>
+                          </div>
+                        ))}
                     </div>
-                  ))}
                 </div>
-              </div>
             </div>
           </div>
         </section>
-      );
-    };
-
-    // --- Education Content (Content Only) ---
-    const EducationContent = () => {
-      return (
-        <div className="w-full">
-          {/* Main Degree */}
-          <div className="bg-gray-900/60 border border-gray-700/80 rounded-2xl p-8 mb-8 shadow-2xl relative overflow-hidden group hover:border-emerald-500/50 transition-colors">
-            <div className="absolute top-0 left-0 w-1 h-20 bg-gradient-to-b from-emerald-500 to-sky-500 rounded-br-lg"></div>
-            <div className="flex items-start">
-              <div className="flex-shrink-0 mr-6 mt-1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-white"><path d="M22 10v6M2 10l10-5 10 5-10 5z" /><path d="M6 12v5c3 0 6-3 6-3s3 3 6 3v-5" /></svg>
-              </div>
-              <div>
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">Administrador de Empresas</h3>
-                <p className="text-emerald-400 font-semibold mb-3">Universidad de Antioquia | 2017</p>
-                <p className="text-gray-400 leading-relaxed">
-                  Formación integral en procesos empresariales, optimización y gestión de operaciones con enfoque en mejora continua y análisis de datos para la toma de decisiones estratégicas.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Additional Studies */}
-          <h3 className="text-2xl font-bold text-white mb-6 text-center">Estudios Adicionales</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              { title: "Data Science for All", entity: "MinTIC", year: "2022" },
-              { title: "Machine Learning in Python", entity: "University of Michigan - Coursera", year: "2020" },
-              { title: "Data Analysis and Machine Learning", entity: "University of Michigan - Coursera", year: "2019" },
-              { title: "Introduction to Data Science", entity: "University of Michigan - Coursera", year: "2022" },
-              { title: "Basic Python", entity: "Platzi", year: "2022" },
-              { title: "Statistics Introduction with R", entity: "Universidad de Antioquia", year: "2018" }
-            ].map((study, idx) => (
-              <div key={idx} className="bg-gray-800/40 border border-gray-700/50 p-6 rounded-lg hover:bg-gray-800/60 transition-colors flex items-center border-l-4 border-l-emerald-500">
-                <div>
-                  <h4 class="text-white font-bold text-lg">{study.title}</h4>
-                  <p class="text-sky-400 text-sm">{study.entity} | {study.year}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
       );
     };
 
@@ -686,7 +603,6 @@
     const root = ReactDOM.createRoot(document.getElementById('root'));
     root.render(<App />);
   </script>
-  <script type="module" src="/index.tsx"></script>
+<script type="module" src="/index.tsx"></script>
 </body>
-
 </html>
